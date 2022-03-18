@@ -1,16 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, {Component} from 'react';
 import Aloha from './components/Aloha';
-function App() {
-  const user= {
-    fname: 'Elon',
-    sname: 'Musk',
+class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      fname: 'Elon',
+      sname: 'Musk',
+    }
   }
-  return <React.Fragment>
-      <Aloha name={`${user.fname} ${user.sname}`} />
-      <Aloha name='Elen' />
-      <Aloha name='Tim Lee' />
-  </React.Fragment>
+  render(){
+    const {fname} = this.state;
+    return <>
+        <Aloha name={fname} />
+        <Aloha name='Elen' />
+    </>
+  }
 }
 export default App;

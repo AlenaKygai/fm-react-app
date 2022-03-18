@@ -15,10 +15,13 @@ class Aloha extends Component{
   render(){
     const {name} = this.props;
     const {isHi} = this.state;
-    return <>
-    <h2>{isHi ? 'Hi' : 'Bye'}, {name}!</h2>
-    <button onClick={this.handlerBtn} >Aloha</button>
-    </>;
+    if(isHi){
+      return <>
+      <h2>{isHi ? 'Hi' : 'Bye'}, {name}!</h2>
+      <button onClick={this.handlerBtn} >Aloha</button>
+      </>;
+    }
+    return <h2>Bye, {name} </h2>
   }
 }
 export default Aloha;
