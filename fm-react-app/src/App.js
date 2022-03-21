@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import React, {Component} from 'react';
 import Aloha from './components/Aloha';
@@ -35,15 +35,12 @@ class App extends Component{
     }
   }
   render(){
-    const {fname} = this.state;
-    return <>
-        <Aloha name={fname} />
-        <Aloha name='Elen' />
-        <Aloha name='Elen' />
-        <Aloha name='Elen' />
-        <Aloha name='Elen' />
-        <Aloha name='Elen' />
-    </>
-  }
+    const {users} = this.state;
+    return <ul>
+    {users.map(({fname})=><li>
+        <Aloha name={fname} /></li>
+    )}
+    </ul>;
+}
 }
 export default App;
