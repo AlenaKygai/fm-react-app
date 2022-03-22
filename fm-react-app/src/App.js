@@ -7,10 +7,11 @@ class App extends Component{
     super(props);
     this.state = {
       isDirection: true,
+      isAlphabet: true,
       users: [
         {
           id:1,
-          fname:'Elon'
+          fname:'Dima'
         },
         {
           id:2,
@@ -18,7 +19,7 @@ class App extends Component{
         },
         {
           id:3,
-          fname:'Tim'
+          fname:'Alena'
         },
         {
           id:4,
@@ -26,7 +27,7 @@ class App extends Component{
         },
         {
           id:5,
-          fname:'Sash'
+          fname:'Chen'
         },
         {
           id:6,
@@ -39,21 +40,40 @@ class App extends Component{
     const {users,isDirection} = this.state;
     const sortUsers = JSON.parse(JSON.stringify(users));
     //const sortUsers =[...users];
-    sortUsers.sort((prev,next)=> isDirection? prev.id-next.id : next.id-prev.id)
+    sortUsers.sort((prev,next)=> isDirection? next.id-prev.id :prev.id-next.id )
     this.setState({
       isDirection:!isDirection,
       users:sortUsers
     })
   }
+  sortUsersAlp = () =>{
+    const {users,isAlphabet} = this.state;
+    const sortUsersAlp = JSON.parse(JSON.stringify(users));
+    //const sortUsers =[...users];
+    sortUsersAlp.sort( (fw,sw)=>{
+      if(fw.fname > sw.fname){
+         return isAlphabet? 1 : -1; 
+      }
+      if(fw.fname < sw.fname){
+        return isAlphabet? -1 : 1;
+      }
+      return 0;
+    })
+    this.setState({
+      isAlphabet:!isAlphabet,
+      users:sortUsersAlp
+    })
+  }
   render(){
-    const {users, isDirection} = this.state;
+    const {users, isDirection,isAlphabet} = this.state;
     return <>
-    <p>{isDirection? 'straight ': 'reverse '}
-    <button onClick = {this.sortUsers} >SORT</button>
+    <p>
+    <button onClick = {this.sortUsers} >SORT BY NUMBER {isDirection? 'straight ': 'reverse '} </button>
+    <button onClick = {this.sortUsersAlp} >SORT BY NAME {isAlphabet? 'straight ': 'reverse '} </button>
     </p>
-    <ul>
-      {users.map(({fname}, i)=><li key={i}> <Aloha name={fname} /></li> )}
-    </ul>
+    <div>
+      {users.map(({fname, id})=> <Aloha key={id} id={id} name={fname} /> )}
+    </div>
     </>
 }
 }
