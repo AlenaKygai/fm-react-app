@@ -1,13 +1,10 @@
-// import './App.css';
-import React, {Component} from 'react';
-import AlohaSection from './components/AlohaSection';
+import './App.css';
+import React from 'react';
+import UsersList from './components/AlohaSection/UsersList';
 
-class App extends Component{
-  
-  render(){
-    return <>
-    <AlohaSection />
-    </>
-  }
+function App(){
+  return <>
+    <UsersList />
+  </>
 }
 export default App;

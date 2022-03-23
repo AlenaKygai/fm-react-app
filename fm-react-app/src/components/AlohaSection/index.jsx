@@ -1,38 +1,39 @@
 import {Component}  from "react";
 import AlohaList from "./AlohaList";
 
+const userDB = [
+  {
+    id:1,
+    fname:'Dima'
+  },
+  {
+    id:2,
+    fname:'Elen'
+  },
+  {
+    id:3,
+    fname:'Alena'
+  },
+  {
+    id:4,
+    fname:'Bob'
+  },
+  {
+    id:5,
+    fname:'Chen'
+  },
+  {
+    id:6,
+    fname:'Rob'
+  },
+]
 class AlohaSection extends Component{
   constructor(props){
     super(props);
     this.state = {
       isDirection: true,
       isAlphabet: true,
-      users: [
-        {
-          id:1,
-          fname:'Dima'
-        },
-        {
-          id:2,
-          fname:'Elen'
-        },
-        {
-          id:3,
-          fname:'Alena'
-        },
-        {
-          id:4,
-          fname:'Bob'
-        },
-        {
-          id:5,
-          fname:'Chen'
-        },
-        {
-          id:6,
-          fname:'Rob'
-        },
-      ]
+      users:userDB,
     }
   }
   sortUsers = () => {
