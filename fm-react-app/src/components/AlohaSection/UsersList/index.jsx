@@ -32,11 +32,21 @@ class UsersList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      users: userDB,
+      users:userDB.map((user)=>({...user, isSelected:false})),
     }
   }
+  userSelector = (id) => {
+    const {users} = this.state;
+    // const newUsers = JSON.parse(JSON.stringify(users));
+    this.setState({
+      users: users.map((user)=>({...user,
+        isSelected: user.id===id? !user.isSelected : user.isSelected
+      }))
+    })
+  }
   mapUsers = (user)=>{return ( 
-    <UserCard key ={user.id} user={user}/>
+    <UserCard key ={user.id} user={user}
+    userSelector={this.userSelector}/>
   )}
   render() {
     const {users} = this.state;
