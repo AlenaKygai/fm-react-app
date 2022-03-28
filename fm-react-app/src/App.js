@@ -1,13 +1,11 @@
 import './App.css';
-import React, { Component } from 'react';
+import React from 'react';
 import UserSection from './components/AlohaSection/UserSection';
 
-class App extends Component{
+function App (){
 
-  render(){
     return <>
       <UserSection />
     </>
-  }
 }
 export default App;
