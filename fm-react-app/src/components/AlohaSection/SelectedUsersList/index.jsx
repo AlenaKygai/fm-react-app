@@ -6,8 +6,8 @@ const SelectedUsersList = (props) => {
   
   return (
     <div>
-      {selectedUsers.map(({fname})=>{
-        return <span>{fname}</span>
+      {selectedUsers.map(({fname,id})=>{
+        return <span key = {id}>{fname}</span>
       })}
     </div>
   );
