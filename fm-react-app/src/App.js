@@ -1,11 +1,11 @@
 import './App.css';
 import React from 'react';
-import UserSection from './components/AlohaSection/UserSection';
+import StopWatch from './components/AlohaSection/StopWatch';
 
 function App (){
 
     return <>
-      <UserSection />
+      <StopWatch />
     </>
 }
 export default App;
