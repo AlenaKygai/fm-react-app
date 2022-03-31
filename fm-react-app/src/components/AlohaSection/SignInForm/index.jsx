@@ -25,9 +25,20 @@ class SignInForm extends Component {
     this.setState({...initialValues});
   }
   render() {
+
+    function cx (object){
+      return Object.entries(object)
+              .filter(([className, condition])=>condition)
+              .map(([className, condition])=>className)
+              .join(' ')
+    }
+
     const {email,pwd,emailValid,pwdValid} = this.state;
-    const emailClassName = `${styles.input} ${emailValid?styles.valid:styles.invalid}`;
-    const pwdClassName = `${styles.input} ${pwdValid?styles.valid:styles.invalid}`;
+    const emailClassName = cx({
+      [styles.input]:true,
+      [styles.invalis]:!emailValid,
+    })
+
     return (
       <form className={styles.container}
       onSubmit={this.handleForm}>

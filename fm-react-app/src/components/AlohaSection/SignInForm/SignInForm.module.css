@@ -22,9 +22,6 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
-.valid{
-  border-color: rgb(119, 173, 119);
-}
 .invalid{
   border-color: rgb(255, 0, 0);
 }
