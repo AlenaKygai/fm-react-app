@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 import styles from './SignInForm.module.css';
 
 const initialValues = {
   email:'',
   pwd: '',
-  emailValid:false,
-  pwdValid:false,
+  emailValid:true,
+  pwdValid:true,
 };
 class SignInForm extends Component {
   constructor(props){
     super(props);
     this.state = {...initialValues}
 }
-  // handleEmail = ({target:{value}}) => this.setState({email: value})
-  // handlePassword = ({target:{value}}) => this.setState({pwd: value})
+
   handleInput = ({target:{name,value}}) => this.setState({
     [name]: value,
     [`${name}Valid`]: !value.includes(' ')
@@ -26,17 +26,12 @@ class SignInForm extends Component {
   }
   render() {
 
-    function cx (object){
-      return Object.entries(object)
-              .filter(([className, condition])=>condition)
-              .map(([className, condition])=>className)
-              .join(' ')
-    }
-
-    const {email,pwd,emailValid,pwdValid} = this.state;
-    const emailClassName = cx({
-      [styles.input]:true,
-      [styles.invalis]:!emailValid,
+    const {emailValid,pwdValid} = this.state;
+    const emailCX = cx(styles.input,{
+      [styles.invalid]:!emailValid
+    })
+    const pwdCX = cx(styles.input,{
+      [styles.invalid]:!pwdValid
     })
 
     return (
@@ -47,12 +42,12 @@ class SignInForm extends Component {
         name='email' 
         placeholder='email'
         onChange={this.handleInput}
-        className={emailClassName}/>
+        className={emailCX}/>
         <input type='password' 
         name='pwd' 
         placeholder='password'
         onChange={this.handleInput}
-        className={pwdClassName}/>
+        className={pwdCX}/>
         <input type='submit' 
         value='Sign in' className={styles.btn}/>
       </form>
