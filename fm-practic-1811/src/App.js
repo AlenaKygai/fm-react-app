@@ -9,7 +9,6 @@ function App() {
   <Counter step={step}/>
   <Step 
     handleChange = {eventtargetvalue => {
-      console.log(eventtargetvalue);
       setStep(eventtargetvalue) 
     }} 
     step={step}
