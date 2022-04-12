@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class UserCard extends Component {
-
   render() {
     const {user: {id,fname,isSelected}, userSelector} = this.props;
     const styles = {border: isSelected? 'solid 3px pink': undefined}
@@ -13,5 +12,4 @@ class UserCard extends Component {
     );
   }
 }
-
 export default UserCard;
