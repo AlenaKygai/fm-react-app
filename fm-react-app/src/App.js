@@ -1,8 +1,9 @@
 import './App.css';
 import React from 'react';
-import Aloha from './components/AlohaSection/Aloha'
-import UserCard from './components/AlohaSection/UserCard';
-import UsersList from './components/AlohaSection/UsersList';
+// import Aloha from './components/AlohaSection/Aloha'
+// import UserCard from './components/AlohaSection/UserCard';
+// import UsersList from './components/AlohaSection/UsersList';
+import AlohaList from './components/AlohaSection/AlohaList';
 
 function App (){
   const user ={
@@ -15,12 +16,11 @@ function App (){
   }
   const user3 ={
     id:3,
-    fname: 'Musk',
+    fname: 'Noname',
   }
     return <>
-      <Aloha name={user.name} id={user.id}/>
-      <UserCard />
-      <UsersList users={[user2,user3]} />
+      <AlohaList users={[user2,user3]}/>
+
     </>
 }
 export default App;
