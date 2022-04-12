@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 function UserCard (props) {
 
-    const {user: {id,fname,isSelected}, 
-    userSelector = () =>{}
-  } = props;
+    const {user: {id,fname,isSelected}, userSelector} = props;
     const styles = {border: isSelected? 'solid 3px pink': undefined}
     return (
       <article style={styles}>
@@ -13,6 +11,10 @@ function UserCard (props) {
       <button onClick = {()=>{userSelector(id)}} >Select this user</button>
     </article>
     );
+  }
+  UserCard.defaultProps={
+    userSelector: () =>{},
+    user: {id:0,fname:'Rety',isSelected:true }
   }
   export const userPropTypes = {
     id: PropTypes.number.isRequired,
