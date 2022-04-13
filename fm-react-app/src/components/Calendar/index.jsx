@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { format, add } from 'date-fns'
+import { format, add, startOfMonth, getWeeksInMonth } from 'date-fns'
 
 class Calendar extends Component {
   constructor(props) {
@@ -17,6 +17,8 @@ class Calendar extends Component {
     const {day} = this.state;
     return (
       <div>
+        <p>{format(startOfMonth(day),"'month start at:' EEEE")}</p>
+        <p>How many calendar weeks on {format(day," LLLL")} : {getWeeksInMonth((day),startOfMonth(day))}</p>
         <p>{format(day,"dd LLLL yy 'year ,' EEEE")}</p>
         <button onClick = {()=>{this.bthHandler({days:1})}}>Add 1 day</button>
         <button onClick = {()=>{this.bthHandler({weeks:1})}}>Add 1 week</button>
