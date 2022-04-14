@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import styles from './aloha.module.css';
+import styles from './aloha.module.scss';
 import PropTypes from 'prop-types';
 
 class Aloha extends Component{
@@ -30,7 +30,7 @@ class Aloha extends Component{
     if(isHi){
       return <>
       <h2 className={styles.container}>{id}) Hi, {name}!</h2>
-      <button onClick={this.handlerBtn} >Aloha</button>
+      <button onClick={this.handlerBtn} className={styles.btn}>Aloha button</button>
       </>;
     }
     return <h2> Bye, {name} </h2>
