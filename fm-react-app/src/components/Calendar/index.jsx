@@ -18,7 +18,7 @@ class Calendar extends Component {
     return (
       <div>
         <p>{format(startOfMonth(day),"'month start at:' EEEE")}</p>
-        <p>How many calendar weeks on {format(day," LLLL")} : {getWeeksInMonth((day),startOfMonth(day))}</p>
+        <p>How many calendar weeks {format(day," LLLL")} : {getWeeksInMonth((day),startOfMonth(day))}</p>
         <p>{format(day,"dd LLLL yy 'year ,' EEEE")}</p>
         <button onClick = {()=>{this.bthHandler({days:1})}}>Add 1 day</button>
         <button onClick = {()=>{this.bthHandler({weeks:1})}}>Add 1 week</button>
