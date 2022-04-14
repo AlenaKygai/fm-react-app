@@ -1,12 +1,21 @@
 import './App.css';
 import React from 'react';
-import Aloha from './components/AlohaSection/Aloha';
-import Calendar from './components/Calendar';
+
+const List = (props)=>{
+  const {title,children} = props;
+  return (
+    <ul title={title}>
+      {children}
+    </ul>
+  );
+}
 function App (){
 
     return <>
-      <Calendar />
-      <Aloha id={1} name="Elon"/>
+      <List title="qwerty">
+        <li>1</li>
+       <li>2</li>
+      </List>
     </>
 }
 export default App;
