@@ -15,16 +15,16 @@ class UsersLoader extends Component {
   load = () => {
     const {currentPage} = this.state;
     fetch(`https://randomuser.me/api/?results=2&page=${currentPage}&seed=users`)
-    .then(response => response.json())
-    .then((data)=>this.setState({
-      users:data.results,
-    }))
-    .catch(()=>this.setState({
-      isError: true,
-    }))
-    .finally(()=>this.setState({
-      isLoaded: false,
-    }))
+      .then(response => response.json())
+      .then((data)=>this.setState({
+       users:data.results,
+      }))
+      .catch(()=>this.setState({
+       isError: true,
+      }))
+      .finally(()=>this.setState({
+        isLoaded: false,
+      }))
   }
   componentDidMount(){
     this.setState({
@@ -32,7 +32,7 @@ class UsersLoader extends Component {
     })
     this.load();
   }
-  componentDidUpdate(prevState){
+  componentDidUpdate(prevProps,prevState){
     const {currentPage} = this.state;
     if(currentPage!== prevState.currentPage){
       this.load();
@@ -51,14 +51,11 @@ class UsersLoader extends Component {
 
   render() {
     const {users,isError,isLoaded,currentPage} = this.state;
-    if(isError){
-      return  <div> Error</div>
-    }
-    if(isLoaded){
-      return  <div> Loading ... </div>
-    }
-    return (
-      <div>
+    return <div>
+
+        {isError && <div> Error</div>}
+        {isLoaded && <div> Loading ...</div>}
+
         <h2>Users List</h2>
         <button onClick={this.prevPage}>&lt;</button>
         <button onClick={this.nexPage}>&gt;</button>
@@ -69,7 +66,6 @@ class UsersLoader extends Component {
           ))}
         </ul>
       </div>
-    )
 }
 
 }
