@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { getUsers } from '../../api/getUsers';
 import Spinner from '../Spinner';
+import config from '../../config';
 
 
 class UsersLoader extends Component {
@@ -12,11 +13,12 @@ class UsersLoader extends Component {
       isError: false,
       isLoaded: false,
       currentPage:1,
+      currentResults: config.DEFAULT_AMOUNT,
     }
   }
   load = () => {
-    const {currentPage} = this.state;
-    getUsers({page:currentPage, results:3})
+    const {currentPage,currentResults} = this.state;
+    getUsers({page:currentPage, results:currentResults})
       .then((data)=>{
         return (data.error)?
         this.setState({isError:true}):
@@ -36,8 +38,9 @@ class UsersLoader extends Component {
     this.load();
   }
   componentDidUpdate(prevProps,prevState){
-    const {currentPage} = this.state;
-    if(currentPage!== prevState.currentPage){
+    const {currentPage,currentResults} = this.state;
+    if(currentPage!== prevState.currentPage || 
+      currentResults!==prevState.currentResults){
       this.load();
     }
   }
@@ -54,8 +57,12 @@ class UsersLoader extends Component {
   createUser = (user)=>(
     <li key={user.login.uuid}>{JSON.stringify(user)}</li>
   )
+  radioHandler = (event) =>{
+    this.setState({currentResults:event.target.value})
+  }
+
   render() {
-    const {users,isError,isLoaded,currentPage,user} = this.state;
+    const {users,isError,isLoaded,currentPage,currentResults} = this.state;
     return <div>
 
         {isError && <div> Error</div>}
@@ -65,6 +72,20 @@ class UsersLoader extends Component {
         <button onClick={this.prevPage}>&lt;</button>
         <button onClick={this.nexPage}>&gt;</button>
         <p>Current page: {currentPage}</p>
+        <div>
+          <label >
+            <input onChange={this.radioHandler}
+            type='radio' name='results' value={5} checked={currentResults==='5'}/> 5
+          </label>
+          <label>
+            <input onChange={this.radioHandler}
+            type='radio' name='results' value={10} checked={currentResults==='10'}/> 10
+          </label>
+          <label>
+            <input onChange={this.radioHandler}
+            type='radio' name='results' value={15} checked={currentResults==='15'}/> 15
+          </label>
+        </div>
         <ul>
           {users.map(this.createUser)}
         </ul>
