@@ -14,11 +14,12 @@ class UsersLoader extends Component {
       isLoaded: false,
       currentPage:1,
       currentResults: config.DEFAULT_AMOUNT,
+      currentNat:'gb',
     }
   }
   load = () => {
-    const {currentPage,currentResults} = this.state;
-    getUsers({page:currentPage, results:currentResults})
+    const {currentPage,currentResults,currentNat} = this.state;
+    getUsers({page:currentPage, results:currentResults, nat:currentNat})
       .then((data)=>{
         return (data.error)?
         this.setState({isError:true}):
@@ -38,9 +39,12 @@ class UsersLoader extends Component {
     this.load();
   }
   componentDidUpdate(prevProps,prevState){
-    const {currentPage,currentResults} = this.state;
-    if(currentPage!== prevState.currentPage || 
-      currentResults!==prevState.currentResults){
+    const {currentPage,currentResults,currentNat} = this.state;
+    const isUpdate = 
+          currentPage!== prevState.currentPage || 
+          currentResults!==prevState.currentResults ||
+          currentNat!==prevState.currentNat;
+    if(isUpdate){
       this.load();
     }
   }
@@ -55,14 +59,16 @@ class UsersLoader extends Component {
     {currentPage:state.currentPage+1}
   ))
   createUser = (user)=>(
-    <li key={user.login.uuid}>{JSON.stringify(user)}</li>
+    <li key={user.login.uuid}>{user.name.first}({user.nat})</li>
   )
   radioHandler = (event) =>{
     this.setState({currentResults:event.target.value})
   }
-
+  selectHandler = (event) =>{
+    this.setState({currentNat:event.target.value})
+  }
   render() {
-    const {users,isError,isLoaded,currentPage,currentResults} = this.state;
+    const {users,isError,isLoaded,currentPage,currentResults,currentNat} = this.state;
     return <div>
 
         {isError && <div> Error</div>}
@@ -86,6 +92,12 @@ class UsersLoader extends Component {
             type='radio' name='results' value={15} checked={currentResults==='15'}/> 15
           </label>
         </div>
+        <select value={currentNat} onChange={this.selectHandler}>
+            <option value="br">BR</option>
+            <option value="us">US</option>
+            <option value="fr">FR</option>
+            <option value="gb">GB</option>
+          </select>
         <ul>
           {users.map(this.createUser)}
         </ul>
