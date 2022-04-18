@@ -16,7 +16,7 @@ class UsersLoader extends Component {
   }
   load = () => {
     const {currentPage} = this.state;
-    getUsers({page:currentPage, res:3})
+    getUsers({page:currentPage, results:3})
       .then((data)=>{
         return (data.error)?
         this.setState({isError:true}):
