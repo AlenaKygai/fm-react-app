@@ -1,3 +1,5 @@
+import queryString from 'query-string';
+
 /**
  * 
  * @param {*} options
