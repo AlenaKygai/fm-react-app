@@ -16,10 +16,12 @@ class UsersLoader extends Component {
   }
   load = () => {
     const {currentPage} = this.state;
-    getUsers({page:currentPage})
-      .then((data)=>this.setState({
-       users:data.results,
-      }))
+    getUsers({page:currentPage, res:3})
+      .then((data)=>{
+        return (data.error)?
+        this.setState({isError:true}):
+        this.setState({users:data.results})
+      })
       .catch(()=>this.setState({
        isError: true,
       }))
