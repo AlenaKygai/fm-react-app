@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getUsers } from '../../api';
+import { getUsers } from '../../api/getUsers';
+import Spinner from '../Spinner';
 
 
 class UsersLoader extends Component {
@@ -48,22 +49,22 @@ class UsersLoader extends Component {
   nexPage = () => this.setState((state,props)=>(
     {currentPage:state.currentPage+1}
   ))
-
+  createUser = (user)=>(
+    <li key={user.login.uuid}>{JSON.stringify(user)}</li>
+  )
   render() {
-    const {users,isError,isLoaded,currentPage} = this.state;
+    const {users,isError,isLoaded,currentPage,user} = this.state;
     return <div>
 
         {isError && <div> Error</div>}
-        {isLoaded && <div> Loading ...</div>}
+        {isLoaded && <div><Spinner /></div>}
 
         <h2>Users List</h2>
         <button onClick={this.prevPage}>&lt;</button>
         <button onClick={this.nexPage}>&gt;</button>
         <p>Current page: {currentPage}</p>
         <ul>
-          {users.map((user)=>(
-            <li key={user.login.uuid}>{JSON.stringify(user)}</li>
-          ))}
+          {users.map(this.createUser)}
         </ul>
       </div>
 }
