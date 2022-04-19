@@ -1,11 +1,13 @@
 import './App.css';
 import React from 'react';
-import UsersLoader from './components/UsersLoader';
+
 
 
 function App (){
     return <>
-      <UsersLoader />
+      <button onClick={()=>{window.close()}}>Close window</button>
+      <button onClick={()=>{window.open('https://webpack.js.org/')}}>Open window</button>
+      <button onClick={()=>{window.location.assign('https://webpack.js.org/')}}>Open assign</button>
     </>
 }
 export default App;
