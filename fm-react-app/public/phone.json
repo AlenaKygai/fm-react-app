@@ -1,0 +1,17 @@
+[
+  {
+    "id":1,
+    "name":"Sony",
+    "price":"50$"
+  },
+  {
+    "id":2,
+    "name":"Apple",
+    "price":"150$"
+  },
+  {
+    "id":3,
+    "name":"Fly",
+    "price":"20$"
+  }
+]
