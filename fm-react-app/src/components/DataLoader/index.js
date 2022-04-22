@@ -23,8 +23,8 @@ class DataLoader extends Component {
   componentDidMount(){this.load()}
 
   render() {
-    const {render} = this.props;
-    return render(this.state);
+    const {children} = this.props;
+    return children(this.state);
   }
 }
 
