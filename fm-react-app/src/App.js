@@ -1,47 +1,32 @@
 import './App.css';
-import React from 'react';
-import { BrowserRouter, Routes,Route, Link,useNavigate } from "react-router-dom";
-import Calendar from './components/Calendar';
-import Spinner from './components/Spinner';
-import SighInForm from './components/AlohaSection/SignInForm';
-import CounterPage from './pages/CounterPage';
-import LoaderPage from './pages/LoaderPage';
-import UsersLoader from './components/UsersLoader';
+import React, { Component } from 'react';
+import Tree from './components/Tree';
+import {UserContext} from './context';
+import Header from './components/Header';
 
-const Home = ()=> {return <h1>Home</h1>};
 
-function App (){
-    return <>
-        <BrowserRouter> 
-        <h1>App title</h1>
-          <nav>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/calendar">Calendar</Link></li>
-              <li><Link to="/counter">Counter</Link></li>
-              <li><Link to="/spinner">Spinner</Link></li>
-              <li><Link to="/sighinform">SighInForm</Link></li>
-              <li><Link to="/load">Loader</Link></li>
-              <li><Link to="/usersloader">UsersLoader</Link></li>
-            </ul>
-          </nav>
-          <Routes>
-            <Route path="/" element={<Home /> } />
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/counter" element={<CounterPage />} />
-            <Route path="/spinner" element={<Spinner />} />
-            <Route path="/sighinform" element={<SighInForm />} />
-            <Route path="*" element={<PageNotFound /> } />
-            <Route path="/load" element={<LoaderPage /> } />
-            <Route path="/usersloader" element={<UsersLoader /> } />
-          </Routes>
-        </BrowserRouter>
-    </>
-}
-const PageNotFound = (props)=>{
-  const navigate = useNavigate();
-  setTimeout(()=>{navigate('/',{replace:true})},2000);
-  return <h2>404, replace to home page</h2>
+
+class App extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      user:{
+        id:1,
+        fname:'Elon',
+        sname:'Musk',
+        imgSrc:'https://www.presse-citron.net/app/uploads/2021/04/elonmusk.jpg',
+      }
+    }
+  }
+  
+  render(){
+    const {user} = this.state;
+      return <UserContext.Provider value={user}>
+        <Header />
+        <Tree />
+      </UserContext.Provider>;
+  }
+
 }
 
 export default App;
