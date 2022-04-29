@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {UserContext,ThemeContext} from '../../context';
 import styles from './Header.module.scss';
+import { WbSunny,NightsStayRounded } from '@material-ui/icons';
 import cx from 'classnames';
 import CONSTANTS from '../../constants';
 const {THEMES} = CONSTANTS;
@@ -10,7 +11,7 @@ class Header extends Component {
     return (
       <ThemeContext.Consumer>
         {
-          (theme)=>{
+          ([theme,setTheme])=>{
             const classNames = cx(styles.container,
               {
               [styles.light] : theme===THEMES.LIGHT,
@@ -20,7 +21,16 @@ class Header extends Component {
             <UserContext.Consumer>
               {
               (user)=>(
-                <header className={classNames}><p>{user.fname} {user.sname} </p> </header>)
+                <header className={classNames}>
+                  <p>{user.fname} {user.sname} </p> 
+                  <div onClick={()=>{
+                    const nexTheme = theme ===THEMES.LIGHT?
+                    THEMES.DARK : THEMES.LIGHT;
+                    setTheme(nexTheme);
+                  }}>
+                    {theme === THEMES.LIGHT? <WbSunny/>:<NightsStayRounded/>}
+                  </div>
+                </header>)
               }
             </UserContext.Consumer>
           )}

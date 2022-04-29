@@ -10,7 +10,7 @@ const Tree = (props) => {
   return(
     <ThemeContext.Consumer> 
       {
-      (theme)=>{ 
+      ([theme])=>{ 
         const classNames = cx(styles.container,{
         [styles.light] : theme===THEMES.LIGHT,
         [styles.dark] : theme===THEMES.DARK,
