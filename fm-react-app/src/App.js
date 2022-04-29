@@ -6,6 +6,7 @@ import Spinner from './components/Spinner';
 import SighInForm from './components/AlohaSection/SignInForm';
 import CounterPage from './pages/CounterPage';
 import LoaderPage from './pages/LoaderPage';
+import UsersLoader from './components/UsersLoader';
 
 const Home = ()=> {return <h1>Home</h1>};
 
@@ -21,6 +22,7 @@ function App (){
               <li><Link to="/spinner">Spinner</Link></li>
               <li><Link to="/sighinform">SighInForm</Link></li>
               <li><Link to="/load">Loader</Link></li>
+              <li><Link to="/usersloader">UsersLoader</Link></li>
             </ul>
           </nav>
           <Routes>
@@ -31,6 +33,7 @@ function App (){
             <Route path="/sighinform" element={<SighInForm />} />
             <Route path="*" element={<PageNotFound /> } />
             <Route path="/load" element={<LoaderPage /> } />
+            <Route path="/usersloader" element={<UsersLoader /> } />
           </Routes>
         </BrowserRouter>
     </>
