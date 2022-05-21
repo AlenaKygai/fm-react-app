@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import Parent from './Parent';
-// import {ThemeContext} from '../../context';
 import styles from './Tree.module.scss';
 import CONSTANTS from '../../constants';
 import { WithTheme } from '../HOCs';

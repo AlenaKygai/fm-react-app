@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './UserCard.module.scss';
-import {UserContext} from '../../../context';
+import { WithUser } from '../../HOCs';
 
 const UserCard = (props) => {
-  const renderProps = (user) => {
+  const {user} = props;
     return (
      <div className={styles.container}> 
       <h2>UserCard</h2>
@@ -12,8 +12,6 @@ const UserCard = (props) => {
      </div>
   );
 }
-return <UserContext.Consumer>{renderProps}</UserContext.Consumer>
-}
+const UserCardWithUser = WithUser(UserCard);
 
-
-export default UserCard;
+export default UserCardWithUser;

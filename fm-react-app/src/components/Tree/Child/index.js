@@ -1,11 +1,11 @@
 import React from 'react';
-import UserCard from '../UserCard';
+import UserCardWithUser from '../UserCard';
 
 const Child = () => {
   return (
     <div>
       <h2> Child </h2>
-      <UserCard />
+      <UserCardWithUser />
     </div>
   );
 }
