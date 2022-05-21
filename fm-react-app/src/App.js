@@ -1,9 +1,10 @@
 import './App.css';
 import React, { Component } from 'react';
-import Tree from './components/Tree';
+// import Tree from './components/Tree';
 import {UserContext,ThemeContext} from './context';
-import Header from './components/Header';
+import HeaderWithTheme from './components/Header';
 import CONSTANTS from './constants';
+import TreeWithTheme from './components/Tree';
 const {THEMES} = CONSTANTS;
 
 class App extends Component{
@@ -24,8 +25,8 @@ class App extends Component{
     const {user,theme} = this.state;
       return <ThemeContext.Provider value={[theme,this.setTheme]}>
       <UserContext.Provider value={user}>
-        <Header />
-        <Tree />
+        <HeaderWithTheme />
+        <TreeWithTheme />
       </UserContext.Provider>
       </ThemeContext.Provider>;
   }
