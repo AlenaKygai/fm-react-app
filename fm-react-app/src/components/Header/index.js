@@ -4,8 +4,11 @@ import styles from './Header.module.scss';
 import { WbSunny,NightsStayRounded } from '@material-ui/icons';
 import cx from 'classnames';
 import CONSTANTS from '../../constants';
-import { WithTheme } from '../HOCs';
+import { WithTheme, WithUser } from '../HOCs';
 const {THEMES} = CONSTANTS;
+
+const UserInfo = ({user}) => (<p> {user.fname} {user.sname} </p> );
+const UserInfoWithUser = WithUser(UserInfo);
 
 class Header extends Component {
   render() {
@@ -16,10 +19,9 @@ class Header extends Component {
       [styles.light] : isLightTheme,
       [styles.dark] : theme===THEMES.DARK,
     });
-      return (<UserContext.Consumer>
-        {
-         (user)=>(<header className={classNames}>
-            <p>{user.fname} {user.sname} </p> 
+      return (
+      <header className={classNames}>
+        <UserInfoWithUser />
             <div onClick={()=>{
               const nexTheme = isLightTheme? THEMES.DARK : THEMES.LIGHT;
               setTheme(nexTheme);
@@ -27,8 +29,7 @@ class Header extends Component {
           {isLightTheme? <WbSunny/>:<NightsStayRounded/>}
           </div>
           </header>)
-        }
-        </UserContext.Consumer>)}
+}
 }
 // Header.contextType = UserContext;
 
