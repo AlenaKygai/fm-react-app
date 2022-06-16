@@ -4,7 +4,7 @@ import styles from './SignInForm.module.css';
 
 class SignInForm extends Component{
   render(){
-    return
+    return null;
   }
 }
 
