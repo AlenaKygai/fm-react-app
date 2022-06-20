@@ -1,8 +1,9 @@
 import React from 'react';
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import cx from 'classnames';
 import styles from './SignInForm.module.css';
-import {SIGN_IN_SCHEMA} from '../../utils/schemaValidation';
+import {SIGN_IN_SCHEMA} from '../../../utils/schemaValidation';
+import InputWrapper from '../InputWrapper';
 
 const initialValues = {
   email: '',
@@ -13,6 +14,7 @@ const SignInForm = (props) => {
   const onSubmit = (values,formikBag) =>{
     console.log('values:', values);
     console.log('formikBag:', formikBag);
+    formikBag.resetForm();
   }
     return (
       <Formik initialValues={initialValues} 
@@ -22,8 +24,9 @@ const SignInForm = (props) => {
           (formikProps) =>{
             return(
               <Form>
-                <Field name='email'/>
-                <Field name='password'/>
+                <InputWrapper name='email' placeholder='Email'/>
+                <InputWrapper name='password' type='password' placeholder='Password'/>
+                <InputWrapper name='password2' type='password' placeholder='Confirm Password'/>
                 <input type="submit"  value='Sign in'/>
               </Form>
             )

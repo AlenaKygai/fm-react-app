@@ -17,4 +17,5 @@ export const SIGN_UP_SCHEMA = Yup.object({
 export const SIGN_IN_SCHEMA = Yup.object({
   email:EMAIL_SCHEMS,
   password:PASSWORD_SCHEMS,
+  password2:Yup.string().oneOf([Yup.ref('password')], 'Password doest match'),
 })
