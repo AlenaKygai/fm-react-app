@@ -2,7 +2,6 @@ import { ErrorMessage, Field } from 'formik';
 import React from 'react';
 import styles from './InputWrapper.module.css';
 import cx from 'classnames';
-import matchers from '@testing-library/jest-dom/matchers';
 
 const InputWrapper = (props) => {
   const {name, ...rest} = props;
