@@ -15,13 +15,13 @@ const handlerMove = (event)=>{
   })
 }
 const handlerClick = ()=>{
-  setCount(count+1);
+  setCount(count=>count+1);
 }
   return(
     <div style={{height:'80vh'}}
     onMouseMove={handlerMove} onClick={handlerClick}>
       <p>x:{coords.x}</p>
-      <p>y:{stcoordsate.y}</p>
+      <p>y:{coords.y}</p>
       <p>count:{count}</p>  
     </div>
   )
