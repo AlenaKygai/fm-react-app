@@ -12,6 +12,7 @@ function App (){
   return(
     <UserContext.Provider value={user}>
     <BrowserRouter>
+      <button>Switch theme</button>
       <Routes>
         <Route path='/' element={<Homepage />}/>
       </Routes>
