@@ -2,6 +2,7 @@ import React,{useState,useContext,useCallback, useMemo} from 'react';
 import UserProfile from '../components/UserProfile';
 import { ThemeContext } from '../context';
 import CONSTANTS  from '../constants';
+import FuncNameList from '../components/FuncNameList';
 const {THEMES} = CONSTANTS;
 const styleMap = {
   [THEMES.LIGHT]:{
@@ -36,6 +37,7 @@ const Homepage = ()=>{
       <button onClick={handlerTheme}>Switch theme</button>
       <button onClick={handlerLog}>Log value</button>
       <UserProfile />
+      <FuncNameList />
     </div>
   );
 }
