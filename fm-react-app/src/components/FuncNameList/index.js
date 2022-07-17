@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUsersJSON } from '../../api/getUsers';
+import { getUsersJSON } from '../../api';
 import {useData} from '../../hooks';
 
 const FuncNameList = () => {
