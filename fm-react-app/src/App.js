@@ -1,9 +1,10 @@
 import './App.css';
 import React, { useState }  from 'react';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 import Homepage from './pages/HomePage';
 import {UserContext,ThemeContext} from './context';
 import CONSTANTS  from './constants';
+import SignUpForm from './components/forms/SignUpForm';
 const {THEMES} = CONSTANTS;
 
 
@@ -17,8 +18,15 @@ function App (){
     <ThemeContext.Provider value={themeState}>
     <UserContext.Provider value={user}>
     <BrowserRouter>
+      <nav>
+        <ol>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/signup'>Registration</Link></li>
+        </ol>
+      </nav>
       <Routes>
         <Route path='/' element={<Homepage />}/>
+        <Route path='/signup' element={<SignUpForm />}/>
       </Routes>
     </BrowserRouter>
     </UserContext.Provider>
