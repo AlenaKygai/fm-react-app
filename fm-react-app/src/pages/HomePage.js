@@ -1,6 +1,7 @@
 import React,{useState,useContext,useCallback, useMemo} from 'react';
 import UserProfile from '../components/UserProfile';
 import { ThemeContext } from '../context';
+import {useClick} from '../hooks';
 import CONSTANTS  from '../constants';
 import FuncNameList from '../components/FuncNameList';
 const {THEMES} = CONSTANTS;
@@ -18,6 +19,7 @@ function calcValue(n){
   return n**5;
 }
 const Homepage = ()=>{
+  const {countClick} = useClick();
   const [value,setValue] = useState(0);
   const [theme, setTheme] = useContext(ThemeContext);
 
@@ -33,6 +35,7 @@ const Homepage = ()=>{
   return (
     <div style={styleMap[theme]}>
       <h2>Value: {showCalcValue}</h2>
+      <h2>CountClick: {countClick}</h2>
       <input type='number' value={value} onChange={handlerInput}/>
       <button onClick={handlerTheme}>Switch theme</button>
       <button onClick={handlerLog}>Log value</button>
