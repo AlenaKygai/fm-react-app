@@ -5,6 +5,7 @@ import Homepage from './pages/HomePage';
 import {UserContext,ThemeContext} from './context';
 import CONSTANTS  from './constants';
 import SignUpForm from './components/forms/SignUpForm';
+import Chat from './components/Chat';
 const {THEMES} = CONSTANTS;
 
 
@@ -22,11 +23,13 @@ function App (){
         <ol>
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/signup'>Registration</Link></li>
+          <li><Link to='/chat'>Chat</Link></li>
         </ol>
       </nav>
       <Routes>
         <Route path='/' element={<Homepage />}/>
         <Route path='/signup' element={<SignUpForm />}/>
+        <Route path='/chat' element={<Chat />}/>
       </Routes>
     </BrowserRouter>
     </UserContext.Provider>
