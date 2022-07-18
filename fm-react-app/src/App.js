@@ -6,6 +6,7 @@ import {UserContext,ThemeContext} from './context';
 import CONSTANTS  from './constants';
 import SignUpForm from './components/forms/SignUpForm';
 import Chat from './components/Chat';
+import NavMenu from './components/NavMenu';
 const {THEMES} = CONSTANTS;
 
 
@@ -19,13 +20,7 @@ function App (){
     <ThemeContext.Provider value={themeState}>
     <UserContext.Provider value={user}>
     <BrowserRouter>
-      <nav>
-        <ol>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/signup'>Registration</Link></li>
-          <li><Link to='/chat'>Chat</Link></li>
-        </ol>
-      </nav>
+      <NavMenu />
       <Routes>
         <Route path='/' element={<Homepage />}/>
         <Route path='/signup' element={<SignUpForm />}/>
