@@ -1,0 +1,30 @@
+$width: 200px;
+.container{
+  width: $width;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left:-$width;
+  // left:0;
+  top:0;
+  bottom: 0;
+  background-color: rgb(159, 158, 158);
+  transition: left 0.5s;
+}
+.list{
+  list-style: none;
+  a{
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+    border-bottom: transparent 3px solid;
+    color: black;
+    &:hover{
+      border-bottom-color: rgb(54, 49, 49);
+    }
+  }
+}
+.closeBtn{
+  margin-left: auto;
+  padding: 0.5rem;
+}
