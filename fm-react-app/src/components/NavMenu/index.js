@@ -21,8 +21,6 @@ const NavMenu = (props) => {
     const downClick = (event) => {
       if(isMenuOpen){
         closeMenu();
-      }else{
-        openMenu();
       }
     }
     window.addEventListener('click',handlerClick);
