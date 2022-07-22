@@ -1,14 +1,14 @@
-import './App.css';
+import 'App.css';
 import React, { useReducer, useState }  from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import Homepage from './pages/HomePage';
-import {UserContext, ThemeContext, AppContext} from './context';
-import CONSTANTS  from './constants';
+import {UserContext, ThemeContext, AppContext} from 'context';
+import CONSTANTS  from 'constants';
 import SignUpForm from './components/forms/SignUpForm';
 import Chat from './components/Chat';
 import NavMenu from './components/NavMenu';
-import reducer from './appReducer';
+import reducer from 'appReducer';
 const {THEMES, ACTIONS} = CONSTANTS;
 
 
