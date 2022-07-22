@@ -18,14 +18,15 @@ function App (){
     name:'Elon Musk',
   });
   const themeState = useState(THEMES.LIGHT);
-  const [state,dispatch] = useReducer(reducer,{
-    isMenuOpen:false,
-  })
+  const [state, dispatch] = useReducer(reducer,{ isMenuOpen:false });
+  const openMenu = () => dispatch({type: ACTIONS.MENU_OPEN});
+  const closeMenu = () => dispatch({type: ACTIONS.MENU_CLOSE});
   return(
+    <AppContext.Provider value={{state, closeMenu}}>
     <ThemeContext.Provider value={themeState}>
     <UserContext.Provider value={user}>
     <BrowserRouter>
-      <MenuOpenIcon />
+      <MenuOpenIcon onClick={openMenu} />
       <NavMenu />
       <Routes>
         <Route path='/' element={<Homepage />}/>
@@ -35,6 +36,7 @@ function App (){
     </BrowserRouter>
     </UserContext.Provider>
     </ThemeContext.Provider>
+    </AppContext.Provider>
   );
 }
 
